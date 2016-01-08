@@ -35,6 +35,9 @@ public class Data {
 		
 	}
 	
+	/**
+	 * Stampa in modo carino i dati della classe data
+	 */
 	public String toString(){
 		int anno = c.get(Calendar.YEAR);
 		int mese = c.get(Calendar.MONTH) + 1;
