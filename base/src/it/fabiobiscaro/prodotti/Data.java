@@ -26,6 +26,9 @@ public class Data {
 		return diff;
 	}
 	
+	/**
+	 * Altro commento
+	 */
 	public boolean equals(Object obj){
 		if(obj == null) return false;
 		
