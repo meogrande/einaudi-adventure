@@ -24,6 +24,10 @@ public class Prodotto implements Cloneable {
 		this.codice = codicel;
 	}
 
+	/**
+	 * Restituisce la descrizione
+	 * @return
+	 */
 	public String getDescrizione() {
 		return descrizione;
 	}
