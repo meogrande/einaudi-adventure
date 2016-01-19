@@ -12,6 +12,10 @@ public class Prodotto implements Cloneable {
 		this.prezzo = prezzo;
 	}
 
+	/**
+	 * Ciao a tutti!
+	 * @return
+	 */
 	public String getCodice() {
 		return codice;
 	}
