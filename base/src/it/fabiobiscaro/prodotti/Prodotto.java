@@ -20,8 +20,9 @@ public class Prodotto implements Cloneable {
 		return codice;
 	}
 
-	public void setCodice(String codicem) {
-		this.codice = codicem;
+
+	public void setCodice(String codice) {
+		this.codice = codice;
 	}
 
 	/**
