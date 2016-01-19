@@ -20,6 +20,10 @@ public class Prodotto implements Cloneable {
 		this.codice = codice;
 	}
 
+	/**
+	 * Restituisce la descrizione
+	 * @return
+	 */
 	public String getDescrizione() {
 		return descrizione;
 	}
