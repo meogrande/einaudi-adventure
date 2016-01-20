@@ -1,7 +1,7 @@
 package it.fabiobiscaro.prodotti;
 
 public class Prodotto implements Cloneable {
-	String codice;
+	String codice;//Torresan Pajazzo
 	String descrizione;
 	float prezzo;
 
