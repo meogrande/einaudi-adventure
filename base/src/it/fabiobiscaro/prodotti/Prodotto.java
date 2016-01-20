@@ -21,6 +21,10 @@ public class Prodotto implements Cloneable {
 	}
 
 
+	/**
+	 * Questo metodo imposta un bel codice 
+	 * @param codice
+	 */
 	public void setCodice(String codice) {
 		this.codice = codice;
 	}
