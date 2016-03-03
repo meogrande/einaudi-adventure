@@ -97,14 +97,13 @@ public class Prova {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
-				display.asyncExec(new Runnable() {
-					Image image = new Image(display, getClass().getResourceAsStream("/it/fabiobiscaro/imagescroll/img/cassa.gif"));
-
-					GC gc = new GC(canvas);
-
-					public void run() {
-						for (int i = 0; i < 50; i++) {
-							System.out.println(i);
+				Image image = new Image(display, getClass().getResourceAsStream("/it/fabiobiscaro/imagescroll/img/cassa.gif"));
+				GC gc = new GC(canvas);
+				
+				Thread thread = new Thread () {
+					@Override
+					public void run () {
+						for (int i=0; i<100; i++) {
 							gc.drawImage(image, 0, -20 + i * 1);
 							try {
 								System.out.println("Thread " + i + " " + Thread.activeCount());
@@ -114,7 +113,22 @@ public class Prova {
 								Thread.currentThread().interrupt();
 							}
 						}
-					}});
+					}
+				};
+				thread.start ();
+				
+				/*
+				display.asyncExec(new Runnable() {
+					Image image = new Image(display, getClass().getResourceAsStream("/it/fabiobiscaro/imagescroll/img/cassa.gif"));
+
+					GC gc = new GC(canvas);
+
+					public void run() {
+						for (int i = 0; i < 50; i++) {
+							System.out.println(i);
+							gc.drawImage(image, 0, -20 + i * 1);							
+						}
+					}});*/
 				System.out.println("Thread: "  + Thread.activeCount());
 				/*new Runnable() {
 					public void run() {
@@ -147,10 +161,16 @@ public class Prova {
 		btnAsync.setBounds(350, 85, 75, 25);
 		btnAsync.setText("Async");
 		
-		Label lblNewLabel = new Label(shell, SWT.NONE);
-		lblNewLabel.setImage(SWTResourceManager.getImage(Prova.class, "/it/fabiobiscaro/imagescroll/img/cassa.gif"));
-		lblNewLabel.setBounds(333, 156, 92, 95);
-		lblNewLabel.setText("New Label");
+		Button btnProva = new Button(shell, SWT.NONE);
+		btnProva.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				//ProvaThread pt = new ProvaThread(super);
+				//pt.start();
+			}
+		});
+		btnProva.setBounds(350, 138, 75, 25);
+		btnProva.setText("Prova");
 
 	}
 }
