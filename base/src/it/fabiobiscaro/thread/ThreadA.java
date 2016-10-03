@@ -24,7 +24,7 @@ public class ThreadA {
 		synchronized (a) {
 			try { 
 				System.out.println("Attesa...");
-				//a.wait();
+				a.wait();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
