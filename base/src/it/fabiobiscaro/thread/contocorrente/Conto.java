@@ -9,6 +9,7 @@ public class Conto {
 	
 	public synchronized void aggiungi(double quanto) {
 		soldi += quanto;
+		notify();
 	}
 	
 	public synchronized void togli(double quanto) {
