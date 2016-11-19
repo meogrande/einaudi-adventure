@@ -25,17 +25,17 @@ public class ConnessioneMysql {
 		}
 
 		
-			cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/peer?user=root&password=;");
+			cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/peer?user=root&password=");
 			//jdbc:mysql://localhost:3306/Contatti?user=root&password=secret
 		
 
-		sql = "SELECT * FROM clienti;";
+		sql = "SELECT * FROM corso;";
 		// ________________________________query
 		try {
 			st = cn.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next() == true)
-				System.out.println(rs.getString("nome") + "\t" + rs.getString("cognome"));
+				System.out.println(rs.getString("id") + "\t" + rs.getString("idTutor"));
 		} catch (SQLException e) {
 			System.out.println("errore:" + e.getMessage());
 		} // fine try-catch
