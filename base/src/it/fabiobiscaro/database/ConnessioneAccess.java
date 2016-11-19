@@ -3,7 +3,7 @@ package it.fabiobiscaro.database;
 import java.io.IOException;
 import java.sql.*;
 
-public class Connessione {
+public class ConnessioneAccess {
 	public static void main(String[] args) throws SQLException {
 		Connection cn;
 		Statement st;
