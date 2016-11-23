@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class FabioServer {
+public class UnIntServer {
 	public static void main(String[] args) {
 		// Avvio il server
 		ServerSocket ss;

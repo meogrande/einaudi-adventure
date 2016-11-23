@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class FabioClient {
+public class UnIntClient {
 	public static void main(String[] args) {
 		// Mi connetto al server
 		try {
