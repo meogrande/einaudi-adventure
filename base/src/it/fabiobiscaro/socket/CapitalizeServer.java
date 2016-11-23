@@ -33,8 +33,10 @@ public class CapitalizeServer {
         int clientNumber = 0;
         ServerSocket listener = new ServerSocket(9898);
         try {
-            while (true) {
-                new Capitalizer(listener.accept(), clientNumber++).start();
+            while (true) {            	
+            	Socket s = listener.accept(); // resta in attesa finché non riceve una connessione
+            	System.out.println("Creo un capitalizer");
+                new Capitalizer(s, clientNumber++).start(); // Avvia il thread per gestire la connessione
             }
         } finally {
             listener.close();
@@ -78,10 +80,12 @@ public class CapitalizeServer {
                 // Get messages from the client, line by line; return them
                 // capitalized
                 while (true) {
+                	// Legge un dato dalla porta
                     String input = in.readLine();
                     if (input == null || input.equals(".")) {
                         break;
                     }
+                    // Scrive un dato sulla porta
                     out.println(input.toUpperCase());
                 }
             } catch (IOException e) {
