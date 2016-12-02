@@ -12,7 +12,7 @@ public class UnIntServer {
 			ss = new ServerSocket(9080);
 			while (true) {				
 				Socket clientSocket = ss.accept(); // Accetta la connessione
-				System.out.println("Ho ricevuto il numero " + clientSocket.getInputStream().read());
+				System.out.println("Server: Ho ricevuto il numero " + clientSocket.getInputStream().read());
 			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
