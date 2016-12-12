@@ -96,7 +96,7 @@ public class Database {
 
 			sql = "insert into amici (nome, cognome, dataNascita) values ('" + nome + "','" + cognome + "','" + sqlData
 					+ "')";
-
+			System.out.println(sql);
 			// ________________________________query
 
 			st = cn.createStatement(); // creo sempre uno statement sulla
@@ -115,7 +115,7 @@ public class Database {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static void modificaAmico(Amico a) throws SQLException {
+	public static void modificaAmico(Amico a) {
 		Connection cn;
 		Statement st;
 		String sql;
@@ -126,32 +126,32 @@ public class Database {
 			System.out.println("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
 		} // fine try-catch
-
-		// Creo la connessione al database
-		cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&password=");
-
-		// Inserisco nelle variabili i valori da modificare
-		int id = a.getId();
-		String nome = StringEscapeUtils.escapeSql(a.getNome());
-		String cognome = StringEscapeUtils.escapeSql(a.getCognome());
-		Calendar data = Calendar.getInstance();
-		data.setTime(a.getData());
-		String sqlData = data.get(Calendar.YEAR) + "-" + data.get(Calendar.MONTH) + "-"
-				+ data.get(Calendar.DAY_OF_MONTH);
-
-		sql = "update amici set nome='" + nome + "', cognome = '" + cognome + "', dataNascita='" + sqlData
-				+ "' where id=" + id;
-
-		// ________________________________query
 		try {
+			// Creo la connessione al database
+			cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&password=");
+
+			// Inserisco nelle variabili i valori da modificare
+			int id = a.getId();
+			String nome = StringEscapeUtils.escapeSql(a.getNome());
+			String cognome = StringEscapeUtils.escapeSql(a.getCognome());
+			Calendar data = Calendar.getInstance();
+			data.setTime(a.getData());
+			String sqlData = data.get(Calendar.YEAR) + "-" + data.get(Calendar.MONTH) + "-"
+					+ data.get(Calendar.DAY_OF_MONTH);
+
+			sql = "update amici set nome='" + nome + "', cognome = '" + cognome + "', dataNascita='" + sqlData
+					+ "' where id=" + id;
+			System.out.println(sql); // stampa la query
+			// ________________________________query
+
 			st = cn.createStatement(); // creo sempre uno statement sulla
 										// connessione
 			st.execute(sql); // faccio la query su uno statement
-
+			cn.close(); // chiusura connessione
 		} catch (SQLException e) {
 			System.out.println("errore:" + e.getMessage());
 		} // fine try-catch
-		cn.close(); // chiusura connessione
+
 	}
 
 	/**
@@ -180,7 +180,7 @@ public class Database {
 			int id = a.getId();
 
 			sql = "delete from amici where id=" + id;
-
+			System.out.println(sql); // stampa la query
 			// ________________________________query
 
 			st = cn.createStatement(); // creo sempre uno statement sulla

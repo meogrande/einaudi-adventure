@@ -85,7 +85,7 @@ public class AppAmica {
 		risultati = Database.elencoAmici();
 		list.removeAll(); // Ripulisco la lista
 		for (int i = 0; i < risultati.size(); i++) {
-			list.add(risultati.get(i).getCognome() + " " + risultati.get(i).getCognome());
+			list.add(risultati.get(i).getNome() + " " + risultati.get(i).getCognome());
 		}
 	}
 
@@ -119,6 +119,31 @@ public class AppAmica {
 		btnCarica.setText("Carica");
 
 		btnModifica = new Button(shlDatabaseI, SWT.NONE);
+		btnModifica.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				int elementoSelezionato = list.getSelectionIndex();
+				if (elementoSelezionato >= 0) {
+					// Creo un oggetto amico
+					String nome = textNome.getText();
+					String cognome = textCognome.getText();
+					java.text.DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+					Date dataN = null;
+					try {
+						dataN = df.parse(dataNascita.getYear() + "-" + dataNascita.getMonth() + "-" + dataNascita.getDay());
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					int id = risultati.get(elementoSelezionato).getId();
+					Amico a = new Amico(id, nome, cognome, dataN);
+					// Salvo l'amico modificato nel database
+					Database.modificaAmico(a);
+					// ricarico la lista
+					caricaLista();
+				}
+			}
+		});
 		btnModifica.setBounds(237, 252, 75, 25);
 		btnModifica.setText("Modifica");
 
