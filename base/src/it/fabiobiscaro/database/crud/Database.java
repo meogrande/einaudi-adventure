@@ -92,7 +92,7 @@ public class Database {
 			Calendar data = Calendar.getInstance();
 			data.setTime(a.getData());
 			String sqlData = data.get(Calendar.YEAR) + "-" + data.get(Calendar.MONTH) + "-"
-					+ data.get(Calendar.DAY_OF_MONTH);
+					+ data.get(Calendar.DAY_OF_MONTH); //2016-12-20
 
 			sql = "insert into amici (nome, cognome, dataNascita) values ('" + nome + "','" + cognome + "','" + sqlData
 					+ "')";
