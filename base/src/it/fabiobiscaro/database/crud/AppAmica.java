@@ -127,10 +127,11 @@ public class AppAmica {
 					// Creo un oggetto amico
 					String nome = textNome.getText();
 					String cognome = textCognome.getText();
+					// Trasformo giorno, mese e anno in un oggetto di tipo data
 					java.text.DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 					Date dataN = null;
 					try {
-						dataN = df.parse(dataNascita.getYear() + "-" + dataNascita.getMonth() + "-" + dataNascita.getDay());
+						dataN = df.parse(dataNascita.getYear() + "-" + (dataNascita.getMonth()+1) + "-" + dataNascita.getDay());
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -171,10 +172,12 @@ public class AppAmica {
 				// Prendo i valori dai campi
 				String nome = textNome.getText();
 				String cognome = textCognome.getText();
+				// Creo un oggetto di tipo data dai valori delle tendine
+				// Devo aumentare di uno i mesi perché ha base 0
 				java.text.DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 				Date dataN = null;
 				try {
-					dataN = df.parse(dataNascita.getYear() + "-" + dataNascita.getMonth() + "-" + dataNascita.getDay());
+					dataN = df.parse(dataNascita.getYear() + "-" + (dataNascita.getMonth()+1) + "-" + dataNascita.getDay());
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

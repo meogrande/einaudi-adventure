@@ -91,7 +91,7 @@ public class Database {
 			String cognome = StringEscapeUtils.escapeSql(a.getCognome());
 			Calendar data = Calendar.getInstance();
 			data.setTime(a.getData());
-			String sqlData = data.get(Calendar.YEAR) + "-" + data.get(Calendar.MONTH) + "-"
+			String sqlData = data.get(Calendar.YEAR) + "-" + (data.get(Calendar.MONTH)+1) + "-"
 					+ data.get(Calendar.DAY_OF_MONTH); //2016-12-20
 
 			sql = "insert into amici (nome, cognome, dataNascita) values ('" + nome + "','" + cognome + "','" + sqlData
@@ -134,9 +134,10 @@ public class Database {
 			int id = a.getId();
 			String nome = StringEscapeUtils.escapeSql(a.getNome());
 			String cognome = StringEscapeUtils.escapeSql(a.getCognome());
+			// Trasformo l'oggetto data in una stringa giorno-mese-anno (devo aggiungere uno al mese!)
 			Calendar data = Calendar.getInstance();
 			data.setTime(a.getData());
-			String sqlData = data.get(Calendar.YEAR) + "-" + data.get(Calendar.MONTH) + "-"
+			String sqlData = data.get(Calendar.YEAR) + "-" + (data.get(Calendar.MONTH)+1) + "-"
 					+ data.get(Calendar.DAY_OF_MONTH);
 
 			sql = "update amici set nome='" + nome + "', cognome = '" + cognome + "', dataNascita='" + sqlData
