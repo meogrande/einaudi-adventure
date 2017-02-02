@@ -14,7 +14,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 public class ServerGrafico {
 
-	protected Shell shell;
+	protected Shell shlMissItalia;
 	private Table table;
 	private TableColumn tblclmnNome;
 	private TableColumn tblclmnVoti;
@@ -38,9 +38,9 @@ public class ServerGrafico {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
+		shlMissItalia.open();
+		shlMissItalia.layout();
+		while (!shlMissItalia.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -51,11 +51,11 @@ public class ServerGrafico {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		shell = new Shell();
-		shell.setSize(305, 234);
-		shell.setText("SWT Application");
+		shlMissItalia = new Shell();
+		shlMissItalia.setSize(305, 234);
+		shlMissItalia.setText("Miss Italia");
 		
-		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+		table = new Table(shlMissItalia, SWT.BORDER | SWT.FULL_SELECTION);
 		table.setBounds(34, 68, 221, 104);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
@@ -68,7 +68,7 @@ public class ServerGrafico {
 		tblclmnVoti.setWidth(100);
 		tblclmnVoti.setText("Voti");
 		
-		Label lblNewLabel = new Label(shell, SWT.NONE);
+		Label lblNewLabel = new Label(shlMissItalia, SWT.NONE);
 		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
 		lblNewLabel.setBounds(34, 24, 215, 27);
 		lblNewLabel.setText("Lista Voti");

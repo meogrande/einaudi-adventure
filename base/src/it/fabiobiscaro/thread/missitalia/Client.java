@@ -17,7 +17,7 @@ import org.eclipse.swt.events.SelectionEvent;
 
 public class Client {
 
-	protected Shell shell;
+	protected Shell shlVotami;
 	List list;
 	private Button btnVota;
 
@@ -41,9 +41,9 @@ public class Client {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
+		shlVotami.open();
+		shlVotami.layout();
+		while (!shlVotami.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -54,11 +54,11 @@ public class Client {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		shell = new Shell();
-		shell.setSize(450, 300);
-		shell.setText("SWT Application");
+		shlVotami = new Shell();
+		shlVotami.setSize(450, 300);
+		shlVotami.setText("Votami");
 
-		Button btnCarica = new Button(shell, SWT.NONE);
+		Button btnCarica = new Button(shlVotami, SWT.NONE);
 		btnCarica.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -97,10 +97,10 @@ public class Client {
 		btnCarica.setBounds(30, 39, 75, 25);
 		btnCarica.setText("Carica");
 
-		list = new List(shell, SWT.BORDER);
+		list = new List(shlVotami, SWT.BORDER);
 		list.setBounds(177, 39, 137, 213);
 
-		btnVota = new Button(shell, SWT.NONE);
+		btnVota = new Button(shlVotami, SWT.NONE);
 		btnVota.setEnabled(false);
 		btnVota.addSelectionListener(new SelectionAdapter() {
 			@Override
