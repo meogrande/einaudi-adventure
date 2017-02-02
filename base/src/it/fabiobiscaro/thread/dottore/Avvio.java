@@ -1,4 +1,4 @@
-package it.fabiobiscaro.dottore;
+package it.fabiobiscaro.thread.dottore;
 
 public class Avvio {
 
