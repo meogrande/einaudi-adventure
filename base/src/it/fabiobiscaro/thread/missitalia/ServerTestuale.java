@@ -8,16 +8,18 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class Server {
+public class ServerTestuale {
 
 	public static void main(String[] args) throws IOException {
 		ArrayList<String> lista = new ArrayList<String>();
-		lista.add("fabio");
-		lista.add("giulio");
-		lista.add("claudio");
+		lista.add("Anna");
+		lista.add("Marta");
+		lista.add("Ilaria");
+		lista.add("Maria");
 		ArrayList<Integer> voti = new ArrayList<Integer>();
 		voti.add(0);
 		voti.add(0);	
+		voti.add(0);
 		voti.add(0);
 		
 		// Crei un server di connessione
@@ -33,13 +35,15 @@ public class Server {
 			if (comando.equalsIgnoreCase("LISTA")) {
 				// invia la lista
 				PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-				out.println(lista.get(0));
-				out.println(lista.get(1));
-				out.println(lista.get(2));
+				for (int i=0; i<lista.size(); i++) {
+					out.println(lista.get(i));
+				}
 				// Invia il fine lista
 				out.println("FINE");
 			} else {
+				// Recupera il nome votato
 				String nome = in.readLine();
+				// Aggiorno la lista dei voti
 				int pos = -1;
 				for (int i=0; i<lista.size(); i++) {
 					if (lista.get(i).equalsIgnoreCase(nome)) {
