@@ -1,4 +1,4 @@
-package it.fabiobiscaro.thread.missitalia;
+package it.fabiobiscaro.socket.missitalia;
 
 import java.io.BufferedReader;
 import java.io.IOException;

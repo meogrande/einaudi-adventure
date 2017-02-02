@@ -1,4 +1,4 @@
-package it.fabiobiscaro.thread.missitalia;
+package it.fabiobiscaro.socket.missitalia;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
