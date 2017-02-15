@@ -63,6 +63,8 @@ public class ChatClient {
              * the text area in preparation for the next message.
              */
             public void actionPerformed(ActionEvent e) {
+            	System.out.println("Il client " + Thread.currentThread().getId() + " invia un messaggio");
+                
                 out.println(textField.getText());
                 textField.setText("");
             }
@@ -105,7 +107,9 @@ public class ChatClient {
 
         // Process all messages from server, according to the protocol.
         while (true) {
+        	System.out.println("Il client " + Thread.currentThread().getId() + " in attesa di ricevere");
             String line = in.readLine();
+            System.out.println("Il client riceve: " + line);
             if (line.startsWith("SUBMITNAME")) {
                 out.println(getName());
             } else if (line.startsWith("NAMEACCEPTED")) {
