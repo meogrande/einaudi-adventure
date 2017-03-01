@@ -1,7 +1,5 @@
 package it.fabiobiscaro.imagescroll;
 
-import org.eclipse.swt.widgets.Display;
-
 public class ProvaThread extends Thread {
 	private Prova prova;
 	
