@@ -22,6 +22,9 @@ public class StringServer {
 			// invia del testo
 			PrintWriter out = new PrintWriter(s.getOutputStream(), true);
 			out.println("ciao dal serverone!");
+			
+			System.out.println(s.getLocalPort());
+			
 			s.close();
 			// riparta
 		}
