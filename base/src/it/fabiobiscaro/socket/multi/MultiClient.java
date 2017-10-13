@@ -31,16 +31,16 @@ public class MultiClient {
 	public void comunica() {
 		for (;;) {
 			try {
-				System.out.println("4... utente, inserisci la stringa da trasmettere al server");
+				System.out.println("- utente, inserisci la stringa da trasmettere al server");
 				stringaUtente = tastiera.readLine();
 				// la spedisco al server
-				System.out.println("5... invio la stringa al server e attendo");
+				System.out.println("- invio la stringa al server e attendo");
 				outVersoServer.println(stringaUtente);
 				// leggo la risposta del server
 				stringaRicevutaDalServer = inDalServer.readLine();
-				System.out.println("7... risposta dal server " + "\n" + stringaRicevutaDalServer);
+				System.out.println("- risposta dal server " + "\n" + stringaRicevutaDalServer);
 				if (stringaUtente.equals("FINE")) {
-					System.out.println("8 CLIENT: termina elaborazione e chiude connessione");
+					System.out.println("- termina elaborazione e chiude connessione");
 					mioSocket.close();
 					break;
 				}
