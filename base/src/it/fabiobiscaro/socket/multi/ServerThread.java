@@ -7,12 +7,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerThread extends Thread {
-	ServerSocket server = null;
 	Socket client = null;
 	String stringaModificata = null;
-	String stringaRicevuta = null;
-	BufferedReader inDalCLient;
-	PrintWriter outVersoClient;
+	String messaggio = null;
+	BufferedReader input;
+	PrintWriter output;
 
 	public ServerThread(Socket socket) {
 		this.client = socket;
@@ -20,30 +19,21 @@ public class ServerThread extends Thread {
 
 	public void run() {
 		try {
-			System.out.println(" Server " + Thread.currentThread().getId() + " attivo");
-			comunica();
+			input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			
+			while(true) {
+				messaggio = input.readLine(); // riceve il messaggio
+				ServerModel.sendMessage(messaggio, client); // lo ritrasmette 
+				
+				if (messaggio == null || messaggio.equals("FINE")) {
+					System.out.println(Thread.currentThread().getId() + " Addio! " + messaggio);
+					ServerModel.close();
+					System.exit(0);
+				} 
+			}		
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			// esce e basta
 		}
-	}
-	
-	public void comunica() throws Exception {
-		inDalCLient = new BufferedReader(new InputStreamReader(client.getInputStream()));
-		outVersoClient = new PrintWriter(client.getOutputStream(), true);
-		for (;;) {
-			stringaRicevuta = inDalCLient.readLine();
-			if (stringaRicevuta == null || stringaRicevuta.equals("FINE")) {
-				outVersoClient.println(stringaRicevuta + " (server in chiusura...) ");
-				System.out.println(Thread.currentThread().getId() + " Echo sul server in chiusura: " + stringaRicevuta);
-				break;
-			} else {
-				outVersoClient.println(stringaRicevuta + " (ricevuta e ritrasmessa) ");
-				System.out.println(Thread.currentThread().getId() + " Echo sul server: " + stringaRicevuta);
-			}
-		}
-		outVersoClient.close();
-		inDalCLient.close();
-		System.out.println("Server: chiusura socket " + client);
-		client.close();
 	}
 }
