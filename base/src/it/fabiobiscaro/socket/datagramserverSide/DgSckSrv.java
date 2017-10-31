@@ -1,3 +1,6 @@
+/**
+ * Scritto da Biagio Rosario Greco - birg81@libero.it
+ */
 package it.fabiobiscaro.socket.datagramserverSide;
 
 import java.net.DatagramPacket;

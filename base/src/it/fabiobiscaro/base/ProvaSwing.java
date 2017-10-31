@@ -6,10 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProvaSwing {
 
 	private JFrame frame;
+	private JTextField txtCiao;
 
 	/**
 	 * Launch the application.
@@ -46,6 +50,16 @@ public class ProvaSwing {
 		lblProva.setBackground(Color.YELLOW);
 		lblProva.setOpaque(true);
 		frame.getContentPane().add(lblProva, BorderLayout.NORTH);
+		
+		txtCiao = new JTextField();
+		txtCiao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("ciao");
+			}
+		});
+		txtCiao.setText("ciao");
+		frame.getContentPane().add(txtCiao, BorderLayout.WEST);
+		txtCiao.setColumns(10);
 	}
 
 }
