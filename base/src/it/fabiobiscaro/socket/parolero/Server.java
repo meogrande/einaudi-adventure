@@ -17,6 +17,7 @@ public class Server {
 
 	private ServerSocket ss;
 
+	// Classe Thread che si mette in ascolto sul socket
 	class ServerThread extends Thread {
 		Socket s;
 
@@ -43,7 +44,7 @@ public class Server {
 	}
 
 	public void avvio() {
-		// Riceve le connessioni
+		// Crea il server socket le connessioni
 		try {
 			ss = new ServerSocket(9999);
 			uno = ss.accept();
@@ -57,13 +58,13 @@ public class Server {
 		}
 
 		// Il programma non può ascoltare contemporaneamente su entrambi i
-		// socket, uso due thread!
+		// socket: Creo due thread passando le connessioni e li metto in ascolto!
 		ServerThread st1 = new ServerThread(uno);
 		st1.start();
 		ServerThread st2 = new ServerThread(due);
 		st2.start();
 
-		// Dopo 5 secondi cambio parola
+		// Dopo 5 secondi invio una parola diversa
 		while (true) {
 			// Scrivo
 			parola = "fabio";
@@ -92,7 +93,7 @@ public class Server {
 	}
 
 	public static void main(String[] args) {
-
+		// Avvio il server
 		Server server = new Server();
 		server.avvio();
 
