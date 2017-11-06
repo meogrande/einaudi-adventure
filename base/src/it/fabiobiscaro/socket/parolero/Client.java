@@ -1,0 +1,117 @@
+package it.fabiobiscaro.socket.parolero;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+
+public class Client {
+
+	private JFrame frame;
+	private JTextField textIndovina;
+	
+	private String parola;
+	private Socket s;
+	JLabel lblIndovina;
+	
+	class ClientThread extends Thread {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			super.run();
+			try {
+				s = new Socket("localhost",9999);
+				Scanner in = new Scanner(s.getInputStream());
+				while(true) {
+					parola = in.nextLine();
+					lblIndovina.setText(parola);
+				}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+	}
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Client window = new Client();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Client() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblParola = new JLabel("Parola");
+		lblParola.setBounds(99, 44, 46, 14);
+		frame.getContentPane().add(lblParola);
+		
+		lblIndovina = new JLabel("...");
+		lblIndovina.setBounds(186, 44, 46, 14);
+		frame.getContentPane().add(lblIndovina);
+		
+		textIndovina = new JTextField();
+		textIndovina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Quando si preme invio fa qualcosa...
+				
+				PrintWriter out;
+				try {
+					out = new PrintWriter(s.getOutputStream(), true);
+					out.println(textIndovina.getText());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		textIndovina.setBounds(146, 93, 86, 20);
+		frame.getContentPane().add(textIndovina);
+		textIndovina.setColumns(10);
+		
+		JButton btnConnetti = new JButton("Connetti!");
+		btnConnetti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Connessione al server
+				ClientThread ct = new ClientThread();
+				ct.start();
+				
+			}
+		});
+		btnConnetti.setBounds(335, 11, 89, 23);
+		frame.getContentPane().add(btnConnetti);
+	}
+}
