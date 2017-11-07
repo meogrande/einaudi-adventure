@@ -94,6 +94,9 @@ public class Server {
 
 	public static void main(String[] args) {
 		// Avvio il server
+		System.out.println("Avvia il server e due client. Connettili e "
+				+ "poi scrivi la parola nella calsella del client. "
+				+ "Il server controllerà se la parola scritta è uguale.");
 		Server server = new Server();
 		server.avvio();
 

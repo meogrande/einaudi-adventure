@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class Client {
 
@@ -75,12 +76,12 @@ public class Client {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblParola = new JLabel("Parola");
-		lblParola.setBounds(99, 44, 46, 14);
+		JLabel lblParola = new JLabel("Parola da scrivere:");
+		lblParola.setBounds(10, 44, 135, 14);
 		frame.getContentPane().add(lblParola);
 
 		lblIndovina = new JLabel("...");
-		lblIndovina.setBounds(186, 44, 46, 14);
+		lblIndovina.setBounds(155, 44, 46, 14);
 		frame.getContentPane().add(lblIndovina);
 
 		textIndovina = new JTextField();
@@ -100,7 +101,7 @@ public class Client {
 				}
 			}
 		});
-		textIndovina.setBounds(146, 93, 86, 20);
+		textIndovina.setBounds(155, 93, 86, 20);
 		frame.getContentPane().add(textIndovina);
 		textIndovina.setColumns(10);
 
@@ -115,7 +116,16 @@ public class Client {
 				}
 			}
 		});
-		btnConnetti.setBounds(335, 11, 89, 23);
+		btnConnetti.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(btnConnetti);
+		
+		JLabel lblIstruzioniAvviaIl = new JLabel("Avvia il server e due client. Quando 2 client sono connessi inizia il programma.");
+		lblIstruzioniAvviaIl.setHorizontalAlignment(SwingConstants.LEFT);
+		lblIstruzioniAvviaIl.setBounds(10, 149, 414, 36);
+		frame.getContentPane().add(lblIstruzioniAvviaIl);
+		
+		JLabel lblScrivilaQui = new JLabel("Scrivila qui e premi invio:");
+		lblScrivilaQui.setBounds(10, 96, 135, 14);
+		frame.getContentPane().add(lblScrivilaQui);
 	}
 }
