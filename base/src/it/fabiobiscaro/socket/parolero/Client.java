@@ -81,7 +81,7 @@ public class Client {
 		frame.getContentPane().add(lblParola);
 
 		lblIndovina = new JLabel("...");
-		lblIndovina.setBounds(155, 44, 46, 14);
+		lblIndovina.setBounds(155, 44, 228, 14);
 		frame.getContentPane().add(lblIndovina);
 
 		textIndovina = new JTextField();

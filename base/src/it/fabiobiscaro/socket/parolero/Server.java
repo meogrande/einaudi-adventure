@@ -12,7 +12,7 @@ public class Server {
 	private Socket due;
 	PrintWriter out1;
 	PrintWriter out2;
-	
+	private Socket vincitore = null;
 	String parola;
 
 	private ServerSocket ss;
@@ -20,9 +20,19 @@ public class Server {
 	// Classe Thread che si mette in ascolto sul socket
 	class ServerThread extends Thread {
 		Socket s;
+		Scanner in;
+		PrintWriter out;
 
+		// Imposto socket, output e input
 		public ServerThread(Socket s) {
 			this.s = s;
+			try {
+				out = new PrintWriter(s.getOutputStream(), true);
+				in = new Scanner(s.getInputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		@Override
@@ -31,14 +41,15 @@ public class Server {
 			super.run();
 			// legge quello che arriva
 			while (true) {
-				try {
-					Scanner in = new Scanner(s.getInputStream());
-					String risposta = in.nextLine();
-					System.out.println("Il server ha ricevuto: " + risposta + " " + risposta.equals(parola));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				// Leggo una riga e la interpreto
+				String risposta = in.nextLine();
+				System.out.println("Il server ha ricevuto: " + risposta + " ");
+				if (risposta.equals(parola) && vincitore == null) {
+					vincitore = s;
+					// Invia hai vinto al vincitore
+					out.println("Hai vinto!");
 				}
+
 			}
 		}
 	}
@@ -58,7 +69,8 @@ public class Server {
 		}
 
 		// Il programma non può ascoltare contemporaneamente su entrambi i
-		// socket: Creo due thread passando le connessioni e li metto in ascolto!
+		// socket: Creo due thread passando le connessioni e li metto in
+		// ascolto!
 		ServerThread st1 = new ServerThread(uno);
 		st1.start();
 		ServerThread st2 = new ServerThread(due);
@@ -67,7 +79,8 @@ public class Server {
 		// Dopo 5 secondi invio una parola diversa
 		while (true) {
 			// Scrivo
-			parola = "fabio";
+			parola = "albero";
+			vincitore = null;
 			out1.println(parola);
 			out2.println(parola);
 
@@ -77,8 +90,9 @@ public class Server {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			parola = "giulio";
+
+			parola = "manoscritto";
+			vincitore = null;
 			out1.println(parola);
 			out2.println(parola);
 
