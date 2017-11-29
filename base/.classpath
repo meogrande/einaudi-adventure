@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.5.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.20.0.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-2.0.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
