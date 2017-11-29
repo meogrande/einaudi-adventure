@@ -1,4 +1,4 @@
-package it.fabiobiscaro.meteo;
+package it.fabiobiscaro.webservices;
 
 import java.io.BufferedReader;
 import java.io.IOException;
