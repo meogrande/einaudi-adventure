@@ -1,5 +1,7 @@
 package it.fabiobiscaro.webservices;
-
+/**
+ * Questa classe effettua un calcolo chiamando una pagina php che glielo esegue (calcola.php)
+ */
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;

@@ -12,7 +12,7 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-public class Meteo {
+public class MeteoJdom {
 
 	/**
 	 * Effettua una connessione ad una pagina web
