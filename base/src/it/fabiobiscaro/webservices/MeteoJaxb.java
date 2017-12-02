@@ -18,8 +18,9 @@ public class MeteoJaxb {
 			URL xmlFile = new URL(
 					"http://samples.openweathermap.org/data/2.5/weather?q=treviso&mode=xml&appid=b1b15e88fa797225412429c1c50c122a1");
 			
+			// Inizializzo Jaxb per dire che dovrà leggere l'xml in un certo modo
 			JAXBContext jaxbContext = JAXBContext.newInstance(Current.class);
-
+			// Il unmarshaller è l'oggetto che legge l'xml
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			Current current = (Current) jaxbUnmarshaller.unmarshal(xmlFile);
 			System.out.println(current.getCity().getCoord().getLat());
