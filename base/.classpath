@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/meogr/.p2/pool/plugins/org.eclipse.osgi_3.15.100.v20191114-1701.jar" sourcepath="C:/APP/eclipse/plugins/org.eclipse.osgi_3.10.101.v20150820-1432.jar"/>
 	<classpathentry kind="lib" path="C:/Users/meogr/.p2/pool/plugins/org.eclipse.core.commands_3.9.600.v20191122-2109.jar" sourcepath="C:/APP/eclipse/plugins/org.eclipse.core.commands_3.7.0.v20150422-0725.jar"/>
 	<classpathentry kind="lib" path="C:/Users/meogr/.p2/pool/plugins/org.eclipse.equinox.common_3.10.600.v20191004-1420.jar" sourcepath="C:/APP/eclipse/plugins/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar"/>
@@ -23,5 +27,20 @@
 	<classpathentry kind="lib" path="lib/commons-lang3-3.5.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.20.0.jar"/>
 	<classpathentry kind="lib" path="lib/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/codemodel.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/dtd-parser.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/FastInfoset.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/istack-commons-runtime.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/istack-commons-tools.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/javax.activation-api.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb-jxc.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb-runtime.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb-xjc.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/relaxng-datatype.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/rngom.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/stax-ex.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/txw2.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/xsom.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
