@@ -19,6 +19,8 @@ public class Base {
 		System.out.print("Inserisci il primo numero:\n");
 		a = input.nextInt();
 		System.out.println("Il numero inserito e':" + a+ " \n a capo");
+		
+		
 	}
 
 }
