@@ -6,7 +6,7 @@ public class Poligono {
 	
 	public Poligono(int nLati, int lunghezzaLato) {
 		this.numeroLati=nLati;
-		this.lunghezzaLato = lunghezzaLato;
+		this.lunghezzaLato = lunghezzaLato; 
 	}
 	
 	public void setNumeroLati(int numeroLati) {
